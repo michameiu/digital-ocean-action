@@ -12,5 +12,10 @@ jobs:
           droplet-tag: dapi
           digitalocean-access-token: ${{ secrets.DIGITALOCEAN_TOKEN }}
       # Use the output from the `hello` step
+
+  test_deploy:
+    runs-on: ubuntu-latest
+    needs: [digital_ocean_get_ips]
+    steps:
       - name: Get the output ip_addresses
         run: echo "The IP's are ${{ steps.getips.outputs.ip_addresses }}"
