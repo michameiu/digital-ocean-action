@@ -4,6 +4,7 @@ jobs:
   digital_ocean_get_ips:
     runs-on: ubuntu-latest
     name: A job to get a list of ips for
+
     steps:
       - name: Getting the ips
         id: getips
@@ -12,10 +13,16 @@ jobs:
           droplet-tag: dapi
           digitalocean-access-token: ${{ secrets.DIGITALOCEAN_TOKEN }}
       # Use the output from the `hello` step
+    outputs:
+      ips: ${{ steps.getips.outputs.ip_addresses }}
 
   test_deploy:
     runs-on: ubuntu-latest
     needs: [digital_ocean_get_ips]
+    strategy:
+      matrix:
+        droplet: ${{ needs.digital_ocean_get_ips.outputs.ips }}
+
     steps:
       - name: Get the output ip_addresses
-        run: echo "The IP's are ${{ steps.getips.outputs.ip_addresses }}"
+        run: echo "The IP's are ${{ matrix.droplet }}"
