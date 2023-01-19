@@ -1,13 +1,19 @@
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "Digital Ocean Droplets ip address"
+description: "Get the ips for droplets by using tage"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  droplet-tag: # id of input
+    description: "The tag assined to droplets."
     required: true
-    default: "World"
+    default: "dapi"
+
+  digitalocean-access-token: # id of input
+    description: "Digital ocean access_token from the API section"
+    required: true
+    default: ""
+
 outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  ip_addresses: # id of output
+    description: "A list of ips for the any found droplets"
 runs:
   using: "node16"
   main: "dist/index.js"

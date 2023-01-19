@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  digital_ocean_get_ips:
+    runs-on: ubuntu-latest
+    name: A job to get a list of ips for
+    steps:
+      - name: Getting the ips
+        id: getips
+        uses: michameiu/digital-ocean-actionn@v1.2
+        with:
+          droplet-tag: "dapi"
+          digitalocean-access-token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      # Use the output from the `hello` step
+      - name: Get the output ip_addresses
+        run: echo "The time was ${{ steps.getips.outputs.ip_addresses }}"

@@ -3,14 +3,12 @@ const github = require('@actions/github');
 
 
 try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
+    // `droplet-tag` input defined in action metadata file
+    const dropletTag = core.getInput('droplet-tag');
 
-    console.log(`Hello ${nameToGreet}!`);
+    console.log(`Hello ${dropletTag}!`);
 
-    const time = (new Date()).toTimeString();
-
-    core.setOutput("time", time);
+    core.setOutput("ip_addresses", [1.1, 2.2, 3.3]);
 
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
