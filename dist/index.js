@@ -16067,7 +16067,6 @@ try {
             // always executed
         });
 
-    // core.setOutput("ip_addresses", "[1.1, 2.2, 3.3]");
 
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
