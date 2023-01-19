@@ -12,7 +12,7 @@ jobs:
         with:
           droplet-tag: dapi
           digitalocean-access-token: ${{ secrets.DIGITALOCEAN_TOKEN }}
-      # Use the output from the `hello` step
+      # Use the output from the `hello`
     outputs:
       ips: ${{ steps.getips.outputs.ip_addresses }}
 
