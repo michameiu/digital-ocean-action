@@ -6,10 +6,10 @@ try {
     // `droplet-tag` input defined in action metadata file
     const dropletTag = core.getInput('droplet-tag');
 
-    console.log(`Hello ${dropletTag}!`);
+    console.log(`Hello new ${dropletTag}!`);
 
-    // core.setOutput("ip_addresses", [1.1, 2.2, 3.3]);
-    core.setOutput("ip_addresses", "[1.1, 2.2, 3.3]");
+    core.setOutput("ip_addresses", [1.1, 2.2, 3.3]);
+    // core.setOutput("ip_addresses", "[1.1, 2.2, 3.3]");
 
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)

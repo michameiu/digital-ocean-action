@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Getting the ips
         id: getips
-        uses: michameiu/digital-ocean-action@v1.5
+        uses: michameiu/digital-ocean-action
         with:
           droplet-tag: dapi
           digitalocean-access-token: ${{ secrets.DIGITALOCEAN_TOKEN }}
