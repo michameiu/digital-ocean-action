@@ -21,7 +21,7 @@ jobs:
     needs: [digital_ocean_get_ips]
     strategy:
       matrix:
-        droplet: ${{ needs.digital_ocean_get_ips.outputs.ips }}
+        droplet: ${{ fromJSON(needs.digital_ocean_get_ips.outputs.ips) }}
 
     steps:
       - name: Get the output ip_addresses
